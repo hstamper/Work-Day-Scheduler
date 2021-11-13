@@ -8,3 +8,18 @@ $("#2pm").attr("date-time", moment("2:00pm", "h:mm a").format("HH"));
 $("#3pm").attr("date-time", moment("3:00pm", "h:mm a").format("HH"));
 $("#4pm").attr("date-time", moment("4:00pm", "h:mm a").format("HH"));
 $("#5pm").attr("date-time", moment("5:00pm", "h:mm a").format("HH"));
+
+var time = moment();
+
+function setPlanner() {
+    $("#currentDay").text(moment().format("dddd, MMMM Do"));
+
+    $(".time-block").each(function() {
+        var id = $(this).attr("id"); 
+        var schedule = JSON.parse(localStorage.getItem("schedule"));
+
+        if (schedule !== null) {
+            $(this).children(".description").val(schedule); 
+        }
+    })
+}
