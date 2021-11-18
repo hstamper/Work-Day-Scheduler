@@ -21,5 +21,23 @@ function setPlanner() {
         if (schedule !== null) {
             $(this).children(".description").val(schedule); 
         }
-    })
+    });
 }
+
+setPlanner(); 
+
+var saveBtn = $(".savebtn"); 
+
+saveBtn.on("click", function() {
+    var time = $(this).parent().attr("id"); 
+    var schedule = $(this).siblings(".description").val().trim(); 
+
+    localStorage.setItem("time", JSON.stringify(time));
+    localStorage.setItem("schedule", JSON.stringify(schedule)); 
+
+    localStorage.getItem("time"); 
+    localStorage.getItem("schedule"); 
+
+});
+
+
